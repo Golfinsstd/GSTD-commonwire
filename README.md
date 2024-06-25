@@ -29,4 +29,13 @@ Screenshots:
 -
 ![Screenshot_2024-06-25_14-17-34](https://github.com/Golfinsstd/GSTD-commonwire/assets/165297153/86a0c6ef-3e10-4d6f-818f-beaecc03c71f)
 
+Caso a instalação der certo, Aparecerá na Saída
+-
+Screenshots:
+-
+![Screenshot_2024-06-25_14-18-32](https://github.com/Golfinsstd/GSTD-commonwire/assets/165297153/4427e3cf-7de9-4fe7-9480-845ef069c356)
+
+-
+Pronto! Sua biblioteca esta instalada!
+-
 
