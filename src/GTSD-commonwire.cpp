@@ -10,20 +10,22 @@
 #define D8 15
 #define ADC0 A0
 
+int gpioM1G;
+int mapprint;
+
 int gpioA;
 int gpioSWA;
 int tempA;
-int estado =0;
+int estado = 0;
 
-unsigned long execANT =0;
+unsigned long execANT = 0;
 
-commonFUNC::commonFUNC(int gpio,int temp)
+commonFUNC::commonFUNC(int gpio, int temp)
 {
-gpioA = gpio;
-tempA = temp;
-pinMode(gpio, OUTPUT);
+  gpioA = gpio;
+  tempA = temp;
+  pinMode(gpio, OUTPUT);
 }
-
 
 void commonFUNC::blink()
 {
@@ -44,21 +46,37 @@ void commonFUNC::blink()
   }
 }
 
-  void commonFUNC::fade()
+void commonFUNC::fade()
+{
+
+  for (int fadeVR = 0; fadeVR <= 255; fadeVR += 2)
   {
-    
-
-    for(int fadeVR =0;fadeVR <= 255;fadeVR += 2)
-    {
-      analogWrite(gpioA,fadeVR);
-      delay(20);
-     
-    }
-    for(int fadeVR =255;fadeVR >= 255;fadeVR -= 2)
-    {
-      analogWrite(gpioA,fadeVR);
-     delay(20);
-    }
-    
-
+    analogWrite(gpioA, fadeVR);
+    delay(20);
   }
+  for (int fadeVR = 255; fadeVR >= 255; fadeVR -= 2)
+  {
+    analogWrite(gpioA, fadeVR);
+    delay(20);
+  }
+}
+
+motorPIN::motorPIN(int gpioM1)
+{
+  gpioM1G = gpioM1;
+  pinMode(gpioM1, OUTPUT);
+  Serial.begin(115200);
+}
+
+void motorPIN::motorwrite(int mapwm)
+{
+  mapprint = mapwm;
+  int pwm = map(mapwm, 0.0, 100.0, 0, 255);
+  analogWrite(gpioM1G, pwm);
+  delay(1);
+}
+void motorPIN::printspeed()
+{
+  Serial.print("velocidade(de 0 a 100):");
+  Serial.println(mapprint);
+}
