@@ -1,9 +1,9 @@
 /*
----------------exemplo blink GSTD-commonwire---------------
+---------------exemplo motorspeed GSTD-commonwire---------------
 autor:jabutirsom64
 plataforma: Arduino/esp8266
 linguagens: c/c++
------------------------------------------------------------
+----------------------------------------------------------------
 */
 //inclusão da biblioteca
 #include <GSTD-commonwire.h>
