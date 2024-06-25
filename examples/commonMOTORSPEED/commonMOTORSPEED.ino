@@ -18,7 +18,6 @@ void setup()
 }
 //loop infinito
 void loop() {
-  // put your main code here, to run repeatedly
   //define a velocidade do motor em 100 (a velocidade varia de 0 a 100)
   gpioNMOS.motorwrite(100);
   //imprime a velocidade do motor no monitor Serial (115200)
