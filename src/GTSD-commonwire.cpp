@@ -1,4 +1,5 @@
 #include <GSTD-commonwire.h>
+
 #define D0 16
 #define D1 5
 #define D2 4
@@ -12,7 +13,7 @@
 
 int gpioM1G;
 int mapprint;
-
+int gpioBZ_;
 int gpioA;
 int gpioSWA;
 int tempA;
@@ -71,7 +72,7 @@ motorPIN::motorPIN(int gpioM1)
 void motorPIN::motorwrite(int mapwm)
 {
   mapprint = mapwm;
-  int pwm = map(mapwm, 0.0, 100.0, 0, 255);
+  int pwm = map(mapwm, 0, 100, 0, 255);
   analogWrite(gpioM1G, pwm);
   delay(1);
 }
@@ -79,4 +80,77 @@ void motorPIN::printspeed()
 {
   Serial.print("velocidade(de 0 a 100):");
   Serial.println(mapprint);
+}
+buzzerATCH::buzzerATCH(int gpioBZ)
+{
+  pinMode(gpioBZ, OUTPUT);
+  gpioBZ_ = gpioBZ;
+}
+void buzzerATCH::noteWRITE(string nota)
+{
+
+  int convertstr;
+  if (nota == "do")
+  {
+    convertstr = 1;
+  }
+    if (nota == "re")
+  {
+     convertstr = 2;
+  }
+    if (nota == "mi")
+  {
+     convertstr = 3;
+  }
+    if (nota == "fa")
+  {
+     convertstr = 4;
+  }
+    if (nota == "sol")
+  {
+     convertstr = 5;
+  }
+    if (nota == "la")
+  {
+     convertstr = 6;
+  }
+    if (nota == "si")
+  {
+     convertstr = 7;
+  }
+  noTone(gpioBZ_);
+  switch (convertstr)
+  {
+  case 1:
+    tone(gpioBZ_, 262);
+    delay(80);
+    break;
+  case 2:
+    tone(gpioBZ_, 294);
+    delay(80);
+    break;
+  case 3:
+    tone(gpioBZ_, 330);
+    delay(80);
+    break;
+  case 4:
+    tone(gpioBZ_, 349);
+    delay(80);
+    break;
+  case 5:
+    tone(gpioBZ_, 392);
+    delay(80);
+    break;
+  case 6:
+    tone(gpioBZ_, 440);
+    delay(80);
+    break;
+  case 7:
+    tone(gpioBZ_, 494);
+    delay(80);
+    break;
+  default:
+    noTone(gpioBZ_);
+    break;
+  }
 }
