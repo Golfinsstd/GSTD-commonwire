@@ -86,7 +86,7 @@ buzzerATCH::buzzerATCH(int gpioBZ)
   pinMode(gpioBZ, OUTPUT);
   gpioBZ_ = gpioBZ;
 }
-void buzzerATCH::noteWRITE(string nota)
+void buzzerATCH::noteWRITE(String nota)
 {
 
   int convertstr;
