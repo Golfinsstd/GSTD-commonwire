@@ -30,7 +30,7 @@ private:
 
 public:
  buzzerATCH(int gpioBZ);
- void noteWRITE(string nota);
+ void noteWRITE(String nota);
 };
 
 #endif
