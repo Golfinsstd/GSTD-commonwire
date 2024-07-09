@@ -2,9 +2,6 @@
 #define GSTD_COMMONWIRE
 
 #include <Arduino.h>
-#include <string>
-
-using namespace std;
 
 class commonFUNC
 
