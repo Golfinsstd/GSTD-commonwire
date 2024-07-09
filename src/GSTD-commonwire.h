@@ -24,10 +24,17 @@ public:
 class buzzerATCH
 {
 private:
-
 public:
- buzzerATCH(int gpioBZ);
- void noteWRITE(String nota);
+  buzzerATCH(int gpioBZ);
+  void noteWRITE(String nota);
 };
-
+class svsegment
+{
+private:
+public:
+  svsegment(int gpioAV, int gpioBV, int gpioCV, int gpioDV, int gpioEV, int gpioFV, int gpioGV, int gpioDP);
+  void svdigitWRITE(int numberDIGIT);
+  void dpWRITE(int dpSTATE);
+  void clearAL();
+};
 #endif
