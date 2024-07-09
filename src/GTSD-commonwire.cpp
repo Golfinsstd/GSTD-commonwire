@@ -9,7 +9,7 @@
 #define D6 12
 #define D7 13
 #define D8 15
-#define ADC0 A0
+
 
 int gpioM1G;
 int mapprint;
@@ -18,7 +18,14 @@ int gpioA;
 int gpioSWA;
 int tempA;
 int estado = 0;
-
+int gpioAV_;
+int gpioBV_;
+int gpioCV_;
+int gpioDV_;
+int gpioEV_;
+int gpioFV_;
+int gpioGV_;
+int gpioDP_;
 unsigned long execANT = 0;
 
 commonFUNC::commonFUNC(int gpio, int temp)
@@ -94,29 +101,29 @@ void buzzerATCH::noteWRITE(String nota)
   {
     convertstr = 1;
   }
-    if (nota == "re")
+  if (nota == "re")
   {
-     convertstr = 2;
+    convertstr = 2;
   }
-    if (nota == "mi")
+  if (nota == "mi")
   {
-     convertstr = 3;
+    convertstr = 3;
   }
-    if (nota == "fa")
+  if (nota == "fa")
   {
-     convertstr = 4;
+    convertstr = 4;
   }
-    if (nota == "sol")
+  if (nota == "sol")
   {
-     convertstr = 5;
+    convertstr = 5;
   }
-    if (nota == "la")
+  if (nota == "la")
   {
-     convertstr = 6;
+    convertstr = 6;
   }
-    if (nota == "si")
+  if (nota == "si")
   {
-     convertstr = 7;
+    convertstr = 7;
   }
   noTone(gpioBZ_);
   switch (convertstr)
@@ -154,3 +161,129 @@ void buzzerATCH::noteWRITE(String nota)
     break;
   }
 }
+svsegment::svsegment(int gpioAV, int gpioBV, int gpioCV, int gpioDV, int gpioEV, int gpioFV, int gpioGV, int gpioDP)
+{
+  pinMode(gpioAV, OUTPUT);
+  pinMode(gpioBV, OUTPUT);
+  pinMode(gpioCV, OUTPUT);
+  pinMode(gpioDV, OUTPUT);
+  pinMode(gpioEV, OUTPUT);
+  pinMode(gpioFV, OUTPUT);
+  pinMode(gpioGV, OUTPUT);
+  pinMode(gpioDP, OUTPUT);
+  gpioAV_ = gpioAV;
+  gpioBV_ = gpioBV;
+  gpioCV_ = gpioCV;
+  gpioDV_ = gpioDV;
+  gpioEV_ = gpioEV;
+  gpioFV_ = gpioFV;
+  gpioGV_ = gpioGV;
+  gpioDP_ = gpioDP;
+}
+
+void svsegment::svdigitWRITE(int numberDIGIT)
+{
+  switch (numberDIGIT)
+  {
+  case 0:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioDV_, 1);
+    digitalWrite(gpioEV_, 1);
+    digitalWrite(gpioFV_, 1);
+
+    break;
+  case 1:
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioCV_, 1);
+    break;
+  case 2:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioEV_, 1);
+    digitalWrite(gpioDV_, 1);
+    break;
+  case 3:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioDV_, 1);
+    break;
+  case 4:
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioCV_, 1);
+    break;
+  case 5:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioDV_, 1);
+    break;
+  case 6:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioEV_, 1);
+    digitalWrite(gpioDV_, 1);
+    break;
+  case 7:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioCV_, 1);
+    break;
+  case 8:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioDV_, 1);
+    digitalWrite(gpioEV_, 1);
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioGV_, 1);
+    break;
+  case 9:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioGV_, 1);
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioCV_, 1);
+    break;
+  default:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioGV_, 0);
+    break;
+  }
+}
+void svsegment::clearAL()
+{
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioGV_, 0);
+}
+void svsegment::dpWRITE(int dpSTATE)
+{
+  if (dpSTATE == 1)
+  {
+    digitalWrite(gpioDP_, 1);
+  }
+  else if (dpSTATE >= 2)
+  {
+    digitalWrite(gpioDP_, 0);
+  }
+}
+
