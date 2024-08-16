@@ -10,7 +10,6 @@
 #define D7 13
 #define D8 15
 
-
 int gpioM1G;
 int mapprint;
 int gpioBZ_;
@@ -267,13 +266,13 @@ void svsegment::svdigitWRITE(int numberDIGIT)
 }
 void svsegment::clearAL()
 {
-    digitalWrite(gpioAV_, 0);
-    digitalWrite(gpioBV_, 0);
-    digitalWrite(gpioCV_, 0);
-    digitalWrite(gpioDV_, 0);
-    digitalWrite(gpioEV_, 0);
-    digitalWrite(gpioFV_, 0);
-    digitalWrite(gpioGV_, 0);
+  digitalWrite(gpioAV_, 0);
+  digitalWrite(gpioBV_, 0);
+  digitalWrite(gpioCV_, 0);
+  digitalWrite(gpioDV_, 0);
+  digitalWrite(gpioEV_, 0);
+  digitalWrite(gpioFV_, 0);
+  digitalWrite(gpioGV_, 0);
 }
 void svsegment::dpWRITE(int dpSTATE)
 {
@@ -286,4 +285,98 @@ void svsegment::dpWRITE(int dpSTATE)
     digitalWrite(gpioDP_, 0);
   }
 }
+void svsegment::nsvdigitWRITE(int numberDIGIT2)
+{
+  switch (numberDIGIT2)
+  {
+  case 0:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioFV_, 0);
 
+    break;
+  case 1:
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    break;
+  case 2:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioDV_, 0);
+    break;
+  case 3:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    break;
+  case 4:
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioCV_, 0);
+    break;
+  case 5:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    break;
+  case 6:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioDV_, 0);
+    break;
+  case 7:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    break;
+  case 8:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioCV_, 0);
+    digitalWrite(gpioDV_, 0);
+    digitalWrite(gpioEV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioGV_, 0);
+    break;
+  case 9:
+    digitalWrite(gpioAV_, 0);
+    digitalWrite(gpioBV_, 0);
+    digitalWrite(gpioGV_, 0);
+    digitalWrite(gpioFV_, 0);
+    digitalWrite(gpioCV_, 0);
+    break;
+  default:
+    digitalWrite(gpioAV_, 1);
+    digitalWrite(gpioBV_, 1);
+    digitalWrite(gpioCV_, 1);
+    digitalWrite(gpioDV_, 1);
+    digitalWrite(gpioEV_, 1);
+    digitalWrite(gpioFV_, 1);
+    digitalWrite(gpioGV_, 1);
+    break;
+  }
+}
+
+void svsegment::nclearAL()
+{
+  digitalWrite(gpioAV_, 1);
+  digitalWrite(gpioBV_, 1);
+  digitalWrite(gpioCV_, 1);
+  digitalWrite(gpioDV_, 1);
+  digitalWrite(gpioEV_, 1);
+  digitalWrite(gpioFV_, 1);
+  digitalWrite(gpioGV_, 1);
+}
