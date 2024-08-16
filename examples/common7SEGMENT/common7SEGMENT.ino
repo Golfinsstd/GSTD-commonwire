@@ -9,7 +9,7 @@ linguagens: c/c++
 //inclusão da biblioteca
 #include <GSTD-commonwire.h>
 //define os pinos do display (de A ate o pino do ponto)
-svsegment display(2, 3, 4, 5, 6, 7, 8, 9);
+svsegment display(D0, D1, D2, D3, D4, D5, D6, D7);
 
 //setup
 void setup() {
