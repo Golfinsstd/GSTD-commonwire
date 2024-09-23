@@ -1,6 +1,5 @@
 #include <GSTD-commonwire.h>
 
-
 int gpioM1G;
 int mapprint;
 int gpioBZ_;
