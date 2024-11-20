@@ -86,31 +86,31 @@ void buzzerATCH::noteWRITE(String nota)
 {
 
   int convertstr;
-  if (nota == "do")
+  if (nota == "C")
   {
     convertstr = 1;
   }
-  if (nota == "re")
+  if (nota == "D")
   {
     convertstr = 2;
   }
-  if (nota == "mi")
+  if (nota == "E")
   {
     convertstr = 3;
   }
-  if (nota == "fa")
+  if (nota == "F")
   {
     convertstr = 4;
   }
-  if (nota == "sol")
+  if (nota == "G")
   {
     convertstr = 5;
   }
-  if (nota == "la")
+  if (nota == "A")
   {
     convertstr = 6;
   }
-  if (nota == "si")
+  if (nota == "B")
   {
     convertstr = 7;
   }
